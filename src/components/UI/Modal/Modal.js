@@ -1,0 +1,22 @@
+import React from 'react';
+import cssClasses from './Modal.module.css';
+import Aux from '../../../hoc/Aux';
+import Backdrop from '../Backdrop/Backdrop';
+
+//approach2 : backdrop in modal file itself
+
+const Modal = (props) => (
+    <Aux>
+        <Backdrop show={props.show} hideModal={props.hide} />
+        <div 
+            className={cssClasses.Modal}
+            style={{
+                transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                opacity: props.show ? '1' : '0'
+            }}>
+            {props.children}
+        </div>
+    </Aux>
+);
+
+export default Modal;
