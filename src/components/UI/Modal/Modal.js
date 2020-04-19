@@ -8,7 +8,7 @@ import Backdrop from '../Backdrop/Backdrop';
 class Modal extends React.Component {
 
     shouldComponentUpdate (nextProps, nextState) {
-        if(this.props.show !==  nextProps.show) { //if using purecomponent then more checks would be run here
+        if( nextProps.show !== this.props.show  || nextProps.children !== this.props.children ) { //if using purecomponent then more checks would be run here
             return true;
         }
         return false;
@@ -21,7 +21,7 @@ class Modal extends React.Component {
     render() {
         return (
             <Aux>
-                <Backdrop show={this.props.show} clicked={this.props.hide} />
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div 
                     className={cssClasses.Modal}
                     style={{

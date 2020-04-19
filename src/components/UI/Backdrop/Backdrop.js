@@ -2,7 +2,7 @@ import React from 'react';
 import cssClasses from './Backdrop.module.css';
 
 const Backdrop = (props) => (
-    props.show === true ? <div className={cssClasses.Backdrop} onClick={props.clicked}></div> : null
+    props.show ? <div className={cssClasses.Backdrop} onClick={props.clicked}></div> : null
 )
 
 
