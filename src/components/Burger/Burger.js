@@ -2,9 +2,11 @@ import React from 'react';
 import cssClasses from './Burger.module.css';
 import BurgerIngredient from '../Burger/BurgerIngredient/BurgerIngredient';
 
+// import { withRouter } from 'react-router-dom';
+
 const Burger = (props) => {
     let transformedIngredient;
-    transformedIngredient = Object.keys(props.ingredients).map((ingred)=> {
+    transformedIngredient = props.ingredients && Object.keys(props.ingredients).map((ingred)=> {
         return [...Array(props.ingredients[ingred])].map((_, i) => {
             return <BurgerIngredient  key={ingred+i} type={ingred} id={i} />
         })
@@ -13,10 +15,10 @@ const Burger = (props) => {
         // return prev.concat(nex);
     },[])
 
-    if(transformedIngredient.length === 0) {
+    if( props.ingredients && transformedIngredient.length === 0) {
         transformedIngredient = <p>Pleas start adding ingredient</p>;
     }
-    console.log(transformedIngredient);
+    console.log(transformedIngredient,'......',props);
     return (
         <div className = {cssClasses.Burger}>
             <BurgerIngredient type={'bread-top'} />
@@ -26,4 +28,5 @@ const Burger = (props) => {
     )
 }
 
+// export default withRouter(Burger);
 export default Burger;
